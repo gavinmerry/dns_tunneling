@@ -12,11 +12,11 @@ apt update
 apt install -y python3 python3-venv
 
 # Create virtual environment
-mkdir -p /opt/dnsvenv
-python3 -m venv /opt/dnsvenv
+mkdir -p venv
+python3 -m venv venv
 
 # Activate venv and install dnslib
-source /opt/dnsvenv/bin/activate
+source venv/bin/activate
 pip install --upgrade pip
 pip install dnslib
 
