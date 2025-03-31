@@ -1,5 +1,5 @@
 from dnslib.server import DNSServer, BaseResolver
-from dnslib import DNSRecord, RR, A, QTYPE
+from dnslib import RR, A, QTYPE
 import base64
 
 class ExfilResolver(BaseResolver):
