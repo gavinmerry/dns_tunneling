@@ -14,11 +14,11 @@ apt update
 apt install -y python3 python3-venv
 
 # Create venv for the DNS client
-mkdir -p /opt/dnsvenv
-python3 -m venv /opt/dnsvenv
+mkdir -p venv
+python3 -m venv venv
 
 # Activate venv and install dnspython
-source /opt/dnsvenv/bin/activate
+source venv/bin/activate
 pip install --upgrade pip
 pip install dnspython
 
