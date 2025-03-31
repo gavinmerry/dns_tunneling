@@ -1,9 +1,6 @@
 from dnslib.server import DNSServer, BaseResolver
 from dnslib import DNSRecord, RR, A
 import base64
-import os
-import sys
-import contextlib
 
 class ExfilResolver(BaseResolver):
     def __init__(self):
@@ -13,22 +10,15 @@ class ExfilResolver(BaseResolver):
         qname = str(request.q.qname)
         cleaned = qname.rstrip(".")
         parts = cleaned.split(".")
-
-        if len(parts) < 1:
-            return request.reply()
-
         chunk_data = parts[0]
         self.chunks.append(chunk_data)
         full_encoded = "".join(self.chunks)
-
-        with open(os.devnull, 'w') as devnull:
-            with contextlib.redirect_stdout(devnull), contextlib.redirect_stderr(devnull):
-                try:
-                    message = base64.b64decode(full_encoded).decode()
-                    print(f"Decoded message: {message}")
-                    self.chunks = []  
-                except Exception:
-                    pass  
+        try:
+            message = base64.b64decode(full_encoded).decode()
+            print(f"[🎉] Decoded message: {message}")
+            self.chunks = []  
+        except Exception:
+            pass    
 
         reply = request.reply()
         reply.add_answer(RR(rname=qname, rtype="A", rclass=1, ttl=60, rdata=A("127.0.0.1")))
