@@ -1,4 +1,4 @@
-from dnslib.server import BaseResolver
+from dnslib.server import DNSServer, BaseResolver
 from dnslib import DNSRecord, RR, A
 import base64
 import os
