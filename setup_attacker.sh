@@ -25,5 +25,5 @@ if command -v ufw &> /dev/null; then
     ufw allow 53/udp
 fi
 
-echo "[+] Attacker DNS Server setup complete. Virtual environment created at /opt/dnsvenv"
-echo "[*] To activate it: source /opt/dnsvenv/bin/activate"
+echo "[+] Attacker DNS Server setup complete. Virtual environment created at venv"
+echo "[*] To activate it: source venv/bin/activate"
