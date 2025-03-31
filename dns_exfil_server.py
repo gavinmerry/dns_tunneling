@@ -1,5 +1,5 @@
 from dnslib.server import DNSServer, BaseResolver
-from dnslib import DNSRecord, RR, A
+from dnslib import DNSRecord, RR, A, QTYPE
 import base64
 
 class ExfilResolver(BaseResolver):
@@ -21,7 +21,7 @@ class ExfilResolver(BaseResolver):
             pass    
 
         reply = request.reply()
-        reply.add_answer(RR(rname=qname, rtype="A", rclass=1, ttl=60, rdata=A("127.0.0.1")))
+        reply.add_answer(RR(rname=qname, rtype=QTYPE.A, rclass=1, ttl=60, rdata=A("127.0.0.1")))
         return reply
 
 if __name__ == "__main__":
