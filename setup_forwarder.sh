@@ -34,4 +34,4 @@ EOF
 
 systemctl restart bind9
 
-echo "[+] DNS Forwarder ready. exfil.lab
+echo "[+] DNS Forwarder ready. exfil.lab"
