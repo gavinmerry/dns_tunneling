@@ -27,5 +27,5 @@ sed -i "s/^#*DNS=.*/DNS=${FORWARDER_IP}/" /etc/systemd/resolved.conf
 sed -i "s/^#*FallbackDNS=.*/FallbackDNS=/" /etc/systemd/resolved.conf
 systemctl restart systemd-resolved
 
-echo "[+] Victim setup complete. Virtual environment created at /opt/dnsvenv"
-echo "[*] To activate it: source /*
+echo "[+] Victim setup complete. Virtual environment created at venv"
+echo "[*] To activate it: source venv/bin/activate"
